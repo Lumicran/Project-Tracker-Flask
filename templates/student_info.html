@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}Student Info{% endblock %}
+
+{% block body %} 
+    <h1>{{ first }} {{ last }}</h1>
+
+    <p>GitHub Account: {{ github }}</p>
+
+    {% if projects %}
+        <p>Projects:</p>
+        <ul>
+        {% for project in projects %}
+            <li>Title: {{ project[0] }}, Grade: {{ project[1] }}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>This student has no projects.</p>
+    {% endif %}
+
+{% endblock %}

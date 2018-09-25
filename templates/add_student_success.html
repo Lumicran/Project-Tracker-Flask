@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Success{% endblock %}
+
+{% block body %} 
+    <h1>Success!</h1>
+
+    <p> {{ first_name }} {{ last_name }} added successfully. </p>
+
+    <a href="/student?github={{ github }}">Link to student's info page.</a>
+
+{% endblock %}
