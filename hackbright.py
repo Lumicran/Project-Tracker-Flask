@@ -145,7 +145,10 @@ def get_grade_by_github_title(github, title):
 
     row = db_cursor.fetchone()
 
-    print(f"Student {github} in project {title} received grade of {row[0]}")
+    if row != None:
+        print(f"Student {github} in project {title} received grade of {row[0]}")
+    else:
+        print(f"Grade for { github } for project { title} does not exist.")
 
     return row
 

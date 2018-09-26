@@ -16,6 +16,35 @@ def show_homepage():
                             students = students,
                             projects = projects)
 
+@app.route('/assign_grade_form')
+def show_assign_grade_form():
+    """Form to assign a grade to a student."""
+
+    students = hackbright.get_all_students()
+    projects = hackbright.get_all_projects()
+
+    return render_template('assign_grade_form.html',
+                            students = students,
+                            projects = projects)
+
+@app.route('/grade_update', methods=['POST'])
+def update_grade():
+
+    github = request.form.get("student")
+    title = request.form.get("project")
+    project = hackbright.get_project_by_title(title)
+    max_grade = project[2]
+
+    grade = hackbright.get_grade_by_github_title(github, title)
+    
+    if grade == None:
+        print("grade is empty")
+    else:
+        print("grade exists")
+
+    return github
+
+
 
 @app.route('/student_search')
 def show_student_search():
