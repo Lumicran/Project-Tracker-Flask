@@ -20,6 +20,42 @@ def connect_to_db(app):
     db.init_app(app)
 
 
+def get_all_students():
+    """Get a list of all students."""
+
+    QUERY = """
+        SELECT first_name, last_name, github
+        FROM students
+    """
+
+    db_cursor = db.session.execute(QUERY)
+
+    rows = db_cursor.fetchall()
+
+    for row in rows:
+        print(f"{row[0]} {row[1]} {row[2]}")
+
+    return rows
+
+
+def get_all_projects():
+    """Get a list of all projects."""
+
+    QUERY = """
+        SELECT title, description, max_grade
+        FROM projects
+    """
+
+    db_cursor = db.session.execute(QUERY)
+
+    rows = db_cursor.fetchall()
+
+    for row in rows:
+        print(f"{row[0]} {row[1]} {row[2]}")
+
+    return rows
+
+
 def get_student_by_github(github):
     """Given a GitHub account name, print info about the matching student."""
 
@@ -197,7 +233,7 @@ def handle_input():
 if __name__ == "__main__":
     connect_to_db(app)
 
-    handle_input()
+    # handle_input()
 
     # To be tidy, we'll close our database connection -- though, since this
     # is where our program ends, we'd quit anyway.
