@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Success{% endblock %}
+
+{% block body %} 
+    <h1>Success!</h1>
+
+    <p> {{ title }} added successfully. </p>
+
+    <a href="/project?title={{ title }}">Link to project's info page.</a>
+
+{% endblock %}
