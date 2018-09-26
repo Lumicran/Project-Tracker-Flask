@@ -11,7 +11,10 @@
         <p>Projects:</p>
         <ul>
         {% for project in projects %}
-            <li>Title: {{ project[0] }}, Grade: {{ project[1] }}</li>
+            <li>Title: 
+                <a href="/project?title={{ project[0] }}">{{ project[0] }}</a>, 
+                Grade: {{ project[1] }}
+            </li>
         {% endfor %}
         </ul>
     {% else %}
